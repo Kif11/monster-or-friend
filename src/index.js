@@ -1,6 +1,5 @@
 // @ts-nocheck
 
-import './style.css';
 import Dom from './Dom';
 import IKMonster from './components/IKMonster';
 

@@ -1,4 +1,6 @@
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/index.js',
@@ -22,6 +24,18 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: 'public/index.html',
+    }),
+    new CopyPlugin([
+      {
+        from: 'public/assets',
+        to: 'assets',
+      }
+    ]),
+  ],
   devServer: {
     contentBase: './dist',
     compress: true,
