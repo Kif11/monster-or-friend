@@ -1,18 +1,22 @@
 // @ts-nocheck
-
+import AFRAME from 'aframe';
 import Dom from './Dom';
-import IKMonster from './components/IKMonster';
-
-IKMonster();
+import './components/IKMonster';
+import './components/Mover';
 
 const App = () => (
   <a-scene background="color: black">
-    <a-camera
-      position="0 0 2"
-    ></a-camera>
-    <a-entity
-      ik-monster
-    ></a-entity>
+
+    <a-entity id="rig" position="0 0 0">
+      <a-camera position="0 0 0" />
+      <a-entity
+        oculus-go-controls
+        mover
+      />
+    </a-entity>
+
+    <a-entity ik-monster />
+
   </a-scene>
 );
 

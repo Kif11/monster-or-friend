@@ -6,7 +6,7 @@ const Dom = {
       if (name && attrs.hasOwnProperty(name)) {
         let value = attrs[name];
         if (value === true) {
-          element.setAttribute(name, name);
+          element.setAttribute(name, "");
         } else if (value !== false && value != null) {
           element.setAttribute(name, value.toString());
         }
