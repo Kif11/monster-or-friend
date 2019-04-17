@@ -24,17 +24,6 @@ AFRAME.registerComponent('ik-monster', {
     const material = new THREE.MeshBasicMaterial({ wireframe: true });
     const mesh = new THREE.Mesh(geometry, material);
 
-    // create some ik chains
-    var roomGeo = new THREE.BoxGeometry(10, 10, 10);
-    var roomMat = new THREE.MeshBasicMaterial({
-      color: new THREE.Color('#ff8bff'),
-      side: THREE.DoubleSide
-    });
-
-    var room = new THREE.Mesh(roomGeo, roomMat);
-    room.frustumCulled = false;
-    scene.add(room)
-
     const points = [];
     for (let i = 0; i < 10; ++i) {
       points.push(new THREE.Vector2(Math.sin(-i * 0.7) * 4 + 3, (i - 5) * 5).multiplyScalar(0.04));
@@ -60,7 +49,6 @@ AFRAME.registerComponent('ik-monster', {
     });
 
     this.target = mesh;
-    this.target.position.set(0, 0.6, 0)
     scene.add(this.target)
 
     this.iks = [];
