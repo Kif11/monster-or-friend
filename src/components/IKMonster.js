@@ -1,6 +1,7 @@
 import AFRAME from 'aframe';
 import TWEEN from 'tween';
-import glowShader from '../shaders/GlowShader';
+import GlowFrag from '../shaders/GlowFrag.glsl';
+import GlowVert from '../shaders/GlowVert.glsl';
 import { IK, IKChain, IKJoint, IKBallConstraint, IKHelper } from 'three-ik';
 
 const THREE = AFRAME.THREE;
@@ -42,8 +43,8 @@ AFRAME.registerComponent('ik-monster', {
           value: 0
         }
       },
-      vertexShader: glowShader.vertexShaderGlow,
-      fragmentShader: glowShader.fragmentShaderGlow,
+      vertexShader: GlowVert,
+      fragmentShader: GlowFrag,
       transparent: true,
       depthWrite: false
     });
