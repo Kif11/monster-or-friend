@@ -10,49 +10,53 @@ AFRAME.registerComponent('particles', {
     const camera = document.querySelector('a-camera');
     this.camera = camera.object3D;
 
-    var particleGeo = new THREE.BufferGeometry();
-    particleGeo.addAttribute( 'position', new THREE.BufferAttribute( new Float32Array( PARTICLE_COUNT * 3 ), 3 ).setDynamic( true ) );
+    var particleGeo = new THREE.SphereBufferGeometry(0.05, 2, 2);
 
-    var positionAttribute = particleGeo.getAttribute( 'position' );
+    var particleGeometry = new THREE.InstancedBufferGeometry();
+    particleGeometry.index = particleGeo.index;
+    particleGeometry.attributes.position = particleGeo.attributes.position;
+    particleGeometry.attributes.uv = particleGeo.attributes.uv;
+    particleGeometry.attributes.normal = particleGeo.attributes.normal;
+
+    var offsetArray = new Float32Array(PARTICLE_COUNT * 3);
+    var offsetAttribute = new THREE.InstancedBufferAttribute(offsetArray, 3);
+    particleGeometry.addAttribute('offset', offsetAttribute);
+
+    var countArray = new Float32Array(PARTICLE_COUNT);
+    var countAttribute = new THREE.InstancedBufferAttribute(countArray, 1);
+    particleGeometry.addAttribute('count', countAttribute);
 
     //fill starting point attributes
     for (var i = 0; i < DIM; i++){
       for (var j = 0; j < DIM; j++){
         for (var k = 0; k < DIM; k++){
           var idx = DIM*DIM*i + DIM*j + k;
-          positionAttribute.array[3*idx] = 1.4*(i-5) + Math.random();
-          positionAttribute.array[3*idx+1] = 1.4*(j-5) + Math.random();
-          positionAttribute.array[3*idx+2] = 1.4*(k-5) + Math.random();
+          countAttribute.array[idx] = 30*Math.random();
+          offsetAttribute.array[3*idx] = 2.4*(i-5) + Math.random();
+          offsetAttribute.array[3*idx+1] = 2.4*(j-5) + Math.random();
+          offsetAttribute.array[3*idx+2] = 2.4*(k-5) + Math.random();
         }
       }
     }
+    offsetAttribute.needsUpdate = true;
+    countAttribute.needsUpdate = true;
 
-    const spriteTex = new THREE.TextureLoader().load('/assets/particle_sprite.png');
-    var particleMat = new THREE.ShaderMaterial({
+    var particleMat = new THREE.RawShaderMaterial({
       uniforms: {
-        size: {
-          value: 2.2
-        },
-        scale: {
-          value: 150
-        },
-        diffuse: {
-          value: new THREE.Color("#000fff")
-        },
-        particleSpriteTex: {
-          value: spriteTex
-        }
+        time: {value: 0}
       },
       vertexShader: particleShader.vertexShader,
       fragmentShader: particleShader.fragmentShader,
       transparent: true,
-      blending: THREE.AdditiveBlending
+      side: THREE.DoubleSide,
     });
 
-    this.particleSystem = new THREE.Points( particleGeo, particleMat );
+    this.particleSystem = new THREE.Mesh( particleGeometry, particleMat );
+    this.particleSystem.frustumCulled = false;
     entity.add(this.particleSystem)
   },
   tick: function (time, timeDelta) {
     //TODO: pulse
+    this.particleSystem.material.uniforms.time.value = time;
   }
 });
