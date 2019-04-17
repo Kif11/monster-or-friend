@@ -3,6 +3,7 @@ import AFRAME from 'aframe';
 import Dom from './Dom';
 import './components/IKMonster';
 import './components/Mover';
+import './components/Particles';
 
 const App = () => (
   <a-scene background="color: black">
@@ -16,6 +17,7 @@ const App = () => (
     </a-entity>
 
     <a-entity ik-monster />
+    <a-entity particles />
 
   </a-scene>
 );
