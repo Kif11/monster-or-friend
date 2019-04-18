@@ -18,10 +18,16 @@ AFRAME.registerComponent('environment', {
       side: THREE.DoubleSide
     });
 
-    this.noiseMaterial = new THREE.ShaderMaterial({
+    this.el.material = new THREE.ShaderMaterial({
       uniforms: {
         time: {
           value: 0
+        },
+        color1: {
+          value: this.data.color1
+        },
+        color2: {
+          value: this.data.color2
         }
       },
       vertexShader: EnvVert,
@@ -29,13 +35,13 @@ AFRAME.registerComponent('environment', {
       side: THREE.DoubleSide 
     });
 
-    const sphere = new THREE.Mesh(sphereGeometry, this.noiseMaterial);
+    const sphere = new THREE.Mesh(sphereGeometry, this.el.material);
     sphere.frustumCulled = false;
 
     this.el.object3D.add(sphere)
   },
 
   tick: function (time, timeDelta) {
-    this.noiseMaterial.uniforms.time.value = time;
+    this.el.material.uniforms.time.value = time;
   }
 });

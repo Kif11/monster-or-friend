@@ -1,6 +1,8 @@
 @import ./PerlinNoise;
 
 uniform float time;
+uniform vec3 color1;
+uniform vec3 color2;
 
 varying vec3 vPos;
 
@@ -12,5 +14,6 @@ void main() {
   vec3 scrollingPos = vec3(vPos.x, vPos.y, vPos.z + time);
   float noise = cnoise(scrollingPos * freq) + 0.2;
 
-  gl_FragColor = (noise * c1) + ((1.0 - noise) * c2);
+  // gl_FragColor = (noise * color1) + ((1.0 - noise) * color2);
+  gl_FragColor = vec4(mix(color1, color2, noise), 1.0);
 }
