@@ -34,11 +34,13 @@ AFRAME.registerComponent('ik-monster', {
     jointGeo.applyMatrix(new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2))
 
     const noiseTexture = new THREE.TextureLoader().load('/assets/tex_Fern_Lush_Noise.jpg');
-    this.jointMat = new THREE.ShaderMaterial({
+    this.material = new THREE.ShaderMaterial({
       uniforms: {
-        noise: {
-          value: noiseTexture
-        },
+        noise: { value: noiseTexture },
+        c1: { value: new THREE.Color(0.592, 0.701, 0.847) },
+        c2: { value: new THREE.Color(0.286, 0.145, 0.356) },
+        c3: { value: new THREE.Color(0.590,0.226,0.519) },
+        c4: { value: new THREE.Color(0.729,1.000,0.981) },
         time: {
           value: 0
         }
@@ -64,7 +66,7 @@ AFRAME.registerComponent('ik-monster', {
 
         for (let i = 0; i < this.bonesPerArm; i++) {
 
-          const bone = new THREE.Mesh(jointGeo, this.jointMat);
+          const bone = new THREE.Mesh(jointGeo, this.material);
           bone.position.z = i === 0 ? 0.25 * Math.random() * k : 0;
           bone.position.y = i === 0 ? 0 : this.distance;
           bone.position.x = i === 0 ? 0.1 * Math.random() * (j - this.armXCount / 2) : 0.1 * Math.random();
@@ -100,7 +102,7 @@ AFRAME.registerComponent('ik-monster', {
   },
 
   tick: function (time, timeDelta) {
-    const jointMat = this.jointMat;
+    const jointMat = this.material;
     const diff = Date.now() - this.lastTime;
 
     var camWorldPos = this.camera.getWorldPosition(new THREE.Vector3());
