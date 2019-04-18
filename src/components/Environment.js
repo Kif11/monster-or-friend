@@ -1,5 +1,6 @@
 import AFRAME from 'aframe';
-import EnvironmentShader from '../shaders/EnvironmentShader';
+import EnvFrag from '../shaders/EnvironmentFrag.glsl';
+import EnvVert from '../shaders/EnvironmentVert.glsl';
 const THREE = AFRAME.THREE;
 
 AFRAME.registerComponent('environment', {
@@ -23,8 +24,8 @@ AFRAME.registerComponent('environment', {
           value: 0
         }
       },
-      vertexShader: EnvironmentShader.vertexShader,
-      fragmentShader: EnvironmentShader.fragmentShader,
+      vertexShader: EnvVert,
+      fragmentShader: EnvFrag,
       side: THREE.DoubleSide 
     });
 

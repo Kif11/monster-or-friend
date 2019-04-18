@@ -1,8 +1,8 @@
 import AFRAME from 'aframe';
-import particleShader from '../shaders/ParticleShader';
+import particleVert from '../shaders/ParticleVert.glsl';
+import particleFrag from '../shaders/ParticleFrag.glsl';
 import improvedNoise from './ImprovedNoise';
 const perlin = new improvedNoise();
-
 const THREE = AFRAME.THREE;
 
 const DIM = 10;
@@ -49,8 +49,8 @@ AFRAME.registerComponent('particles', {
       uniforms: {
         time: {value: 0}
       },
-      vertexShader: particleShader.vertexShader,
-      fragmentShader: particleShader.fragmentShader,
+      vertexShader: particleVert,
+      fragmentShader: particleFrag,
       transparent: true,
       side: THREE.DoubleSide,
     });
