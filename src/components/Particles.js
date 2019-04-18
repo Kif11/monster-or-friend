@@ -45,10 +45,12 @@ AFRAME.registerComponent('particles', {
     offsetAttribute.needsUpdate = true;
     countAttribute.needsUpdate = true;
 
-    this.material = new THREE.RawShaderMaterial({
+    this.el.material = new THREE.RawShaderMaterial({
       uniforms: {
-        time: {value: 0},
-        c5: {value: new THREE.Color("#6B0A74")}
+        time: {
+          value: 0
+        },
+        particles_c1: {value: new THREE.Color(0xff0000)}
       },
       vertexShader: particleVert,
       fragmentShader: particleFrag,
@@ -56,12 +58,12 @@ AFRAME.registerComponent('particles', {
       side: THREE.DoubleSide,
     });
 
-    this.particleSystem = new THREE.Mesh( particleGeometry, this.material );
+    this.particleSystem = new THREE.Mesh( particleGeometry, this.el.material );
     this.particleSystem.frustumCulled = false;
     entity.add(this.particleSystem)
   },
   tick: function (time, timeDelta) {
     //TODO: pulse
-    this.material.uniforms.time.value = time;
+    this.el.material.uniforms.time.value = time;
   }
 });

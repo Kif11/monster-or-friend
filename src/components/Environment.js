@@ -23,11 +23,11 @@ AFRAME.registerComponent('environment', {
         time: {
           value: 0
         },
-        color1: {
-          value: this.data.color1
+        env_c1: {
+          value: new THREE.Color(0xff0000)
         },
-        color2: {
-          value: this.data.color2
+        env_c2: {
+          value: new THREE.Color(0x0008ff)
         }
       },
       vertexShader: EnvVert,
