@@ -22,7 +22,7 @@ const ParticleShader = {
     }
   `,
   fragmentShader: `
-		#extension GL_OES_standard_derivatives : enable
+		// #extension GL_OES_standard_derivatives : enable
 
     precision highp float;
     varying vec3 vNormal;
@@ -35,7 +35,14 @@ const ParticleShader = {
 			// vec3 fdy = vec3( dFdy( vViewPos.x ), dFdy( vViewPos.y ), dFdy( vViewPos.z ) );
 			// vec3 normal = normalize( cross( fdx, fdy ) );
 
-      vec3 col = vec3( 1.0, 0.4, 1.0) + sin(vCount + time/10000.0) * vec3(0.1, 0.3, 0.1);
+			float z = mod(time + vCount, 3000.0);
+			float t = 0.0;
+
+			if(z > 300.0 && z < 800.0){
+				t = sin(3.0*(z - 300.0)/500.0);
+			}
+
+      vec3 col = vec3( 1.0, 0.4, 1.0) + t * vec3(0.05, 0.15, 0.05);
     	gl_FragColor = vec4( col, 1.0 );
     }
   `

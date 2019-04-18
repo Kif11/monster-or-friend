@@ -1,5 +1,8 @@
 import AFRAME from 'aframe';
 import particleShader from '../shaders/ParticleShader';
+import improvedNoise from './ImprovedNoise';
+const perlin = new improvedNoise();
+
 const THREE = AFRAME.THREE;
 
 const DIM = 10;
@@ -30,11 +33,12 @@ AFRAME.registerComponent('particles', {
     for (var i = 0; i < DIM; i++){
       for (var j = 0; j < DIM; j++){
         for (var k = 0; k < DIM; k++){
+          var z = perlin.noise(Math.cos(i/3),Math.sin(j/3),Math.sin(k/3));
           var idx = DIM*DIM*i + DIM*j + k;
-          countAttribute.array[idx] = 30*Math.random();
-          offsetAttribute.array[3*idx] = 2.4*(i-5) + Math.random();
-          offsetAttribute.array[3*idx+1] = 2.4*(j-5) + Math.random();
-          offsetAttribute.array[3*idx+2] = 2.4*(k-5) + Math.random();
+          countAttribute.array[idx] = 3000*Math.random();
+          offsetAttribute.array[3*idx] = 20*(z*(i-5)+Math.random() - 0.5);
+          offsetAttribute.array[3*idx+1] = 20*(z*(j-5)+Math.random() - 0.5);
+          offsetAttribute.array[3*idx+2] = 20*(z*(k-5)+Math.random() - 0.5);
         }
       }
     }
