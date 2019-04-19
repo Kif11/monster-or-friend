@@ -24,7 +24,7 @@ const App = () => (
       <a-asset-item id="annotations" src="assets/annotations/annotations.gltf" />
     </a-assets>
 
-    <a-entity tutorial>
+    <a-entity tutorial visible="false">
       <a-gltf-model name="annotations" src="#annotations" />
       <a-gltf-model name="tutorialController" src="#controller" />
     </a-entity>
@@ -32,7 +32,8 @@ const App = () => (
     <a-entity ik-monster color-theme />
     <a-entity particles color-theme />
     <a-entity environment color-theme />
-    
+    <a-entity sound="src: url(assets/astral.mp3); autoplay: true; volume:1; loop:true; positional:false;" />
+
   </a-scene>
 );
 

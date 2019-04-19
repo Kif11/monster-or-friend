@@ -112,7 +112,7 @@ AFRAME.registerComponent('ik-monster', {
     const tweenRight = new THREE.Vector3(1, 0, 0).applyQuaternion(this.camera.quaternion);
     const tweenUp = new THREE.Vector3(0, 1 ,0).applyQuaternion(this.camera.quaternion);
 
-    if (diff > this.length) {
+    if (diff > this.length || time < 100) {
       this.t ++;
       tweenPos.sub(tweenForward.clone().multiplyScalar(2))
       tweenPos.add(tweenRight.clone().multiplyScalar(3* Math.random()* Math.sin(time * 0.001)))
@@ -121,7 +121,7 @@ AFRAME.registerComponent('ik-monster', {
       this.length = Math.random() * 300 + 900;
       const tween = new TWEEN.Tween(this.target.position).to(tweenPos, this.length).onUpdate((f) => { }).start()
 
-      if(tweenPos.distanceTo(this.pivots[0].position) > 4*1 && time > this.doneTime){
+      if((tweenPos.distanceTo(this.pivots[0].position) > 4 && time > this.doneTime) || time < 100){
         this.pivots.forEach((piv, index) => {
           var newPiv = camWorldPos.clone();
           var rF = tweenForward.clone();
@@ -130,7 +130,7 @@ AFRAME.registerComponent('ik-monster', {
           rF.z += 0.8*Math.random()
           rF.normalize()
 
-          newPiv.sub(rF.multiplyScalar(4*1))
+          newPiv.sub(rF.multiplyScalar(4))
           newPiv.x += 0.2*Math.sin(diff*0.002 + Math.random()*8)
           newPiv.y +=  0.4*Math.sin(diff*0.001+ Math.random()*8)
           newPiv.z += 0.2*Math.sin(diff*0.002 + Math.random()*8)

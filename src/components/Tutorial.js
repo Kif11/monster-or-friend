@@ -6,15 +6,15 @@ import FresnelVert from '../shaders/FresnelVert.glsl'
 AFRAME.registerComponent('tutorial', {
   init: function () {
     const group = this.el.object3D;
-    
+
     const controllerEl = this.el.children.namedItem('tutorialController');
     const annotationsEl = this.el.children.namedItem('annotations');
-    
+
     const controller = controllerEl.object3D;
     const annotations = annotationsEl.object3D;
 
     group.rotation.y = -Math.PI / 2;
-    group.position.z = -0.2;
+    group.position.set(0.05, 1.6, -0.6);
 
     controller.rotation.z = THREE.Math.degToRad(-30);
     controller.rotation.y = THREE.Math.degToRad(-10);
@@ -31,8 +31,8 @@ AFRAME.registerComponent('tutorial', {
       vertexShader: FresnelVert,
       fragmentShader: FresnelFrag,
     });
-    
-    
+
+
     const buttonMat = new THREE.MeshBasicMaterial({
       color: new THREE.Color("#37ffdd"),
     });
@@ -56,7 +56,7 @@ AFRAME.registerComponent('tutorial', {
         } else {
           child.material = bodyMat;
         }
-        
+
       }
     })
 
@@ -66,10 +66,22 @@ AFRAME.registerComponent('tutorial', {
 
       for (let i = 0; i < children.length; i += 1 ) {
         const child = children[i];
-        
+
         child.material = textMat;
       }
     })
+
+    this.el.sceneEl.addEventListener('enter-vr', (evt) => {
+      this.el.setAttribute("visible",true);
+    });
+
+    this.el.sceneEl.addEventListener('triggerdown', (evt) => {
+      this.el.setAttribute("visible",false);
+    });
+    
+    this.el.sceneEl.addEventListener('trackpaddown', (evt) => {
+      this.el.setAttribute("visible",false);
+    });
   },
 
   tick: function (time, timeDelta) {

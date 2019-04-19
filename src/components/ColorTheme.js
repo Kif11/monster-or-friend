@@ -169,7 +169,7 @@ const DREAM_THEME = {
   }
 }
 
-const themes = [ CODERCAT_THEME, ASTRAL_THEME, DREAM_THEME ];
+const themes = [ ASTRAL_THEME, CODERCAT_THEME, DREAM_THEME ];
 
 AFRAME.registerComponent('color-theme', {
   init: function () {

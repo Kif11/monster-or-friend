@@ -19,7 +19,7 @@ void main() {
     t = sin(3.0*(z - 300.0)/500.0);
   }
 
-  if(vViewPos.z > 20.0){
+  if(vViewPos.z > 40.0){
     discard;
   }
 
