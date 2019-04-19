@@ -21,7 +21,7 @@ const App = () => (
     <a-entity ik-monster color-theme />
     <a-entity environment color-theme />
     <a-entity particles color-theme />
-    
+
   </a-scene>
 );
 

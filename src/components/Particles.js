@@ -5,7 +5,7 @@ import improvedNoise from './ImprovedNoise';
 const perlin = new improvedNoise();
 const THREE = AFRAME.THREE;
 
-const DIM = 10;
+const DIM = 20;
 const PARTICLE_COUNT = DIM*DIM*DIM;
 AFRAME.registerComponent('particles', {
   init: function () {
@@ -36,9 +36,9 @@ AFRAME.registerComponent('particles', {
           var z = perlin.noise(Math.cos(i/3),Math.sin(j/3),Math.sin(k/3));
           var idx = DIM*DIM*i + DIM*j + k;
           countAttribute.array[idx] = 3000*Math.random();
-          offsetAttribute.array[3*idx] = 20*(z*(i-5)+Math.random() - 0.5);
-          offsetAttribute.array[3*idx+1] = 20*(z*(j-5)+Math.random() - 0.5);
-          offsetAttribute.array[3*idx+2] = 20*(z*(k-5)+Math.random() - 0.5);
+          offsetAttribute.array[3*idx] = 40*(z*(i-DIM/2)+Math.random() - 0.5);
+          offsetAttribute.array[3*idx+1] = 40*(z*(j-DIM/2)+Math.random() - 0.5);
+          offsetAttribute.array[3*idx+2] = 40*(z*(k-DIM/2)+Math.random() - 0.5);
         }
       }
     }
@@ -60,6 +60,7 @@ AFRAME.registerComponent('particles', {
 
     this.particleSystem = new THREE.Mesh( particleGeometry, this.el.material );
     this.particleSystem.frustumCulled = false;
+
     entity.add(this.particleSystem)
   },
   tick: function (time, timeDelta) {
