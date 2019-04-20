@@ -1,15 +1,24 @@
 // @ts-nocheck
 import AFRAME from 'aframe';
 import Dom from './Dom';
+import './style.css';
 import './components/IKMonster';
 import './components/Mover';
 import './components/Environment';
 import './components/Particles';
 import './components/ColorTheme';
 import './components/Tutorial';
+import './components/SoundController';
+import './components/WebUIController';
 
 const App = () => (
   <a-scene background="color: black">
+
+    <a-entity web-ui-controller />
+    <div id="buttonsContainer">
+      <img class="btnImage" src="assets/info.png" alt="info" />
+      <img class="btnImage" id="soundBtn" src="assets/no-sound.png" alt="sound" />
+    </div>
 
     <a-entity id="rig" position="0 0 0">
       <a-camera position="0 0 0" />
@@ -33,13 +42,16 @@ const App = () => (
     <a-entity particles color-theme />
     <a-entity environment color-theme />
 
-    <a-entity sound="
-      src: url(assets/astral.mp3);
-      volume:1;
-      loop: true; 
-      positional: false;
-    " />
-
+    <a-entity
+      sound-controller
+      sound="
+        src: url(assets/astral.mp3);
+        volume:1;
+        loop: true;
+        positional: false;
+      "
+    />
+    
   </a-scene>
 );
 
