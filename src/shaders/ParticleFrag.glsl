@@ -1,17 +1,10 @@
-// #extension GL_OES_standard_derivatives : enable
-
 precision highp float;
-varying vec3 vNormal;
 varying vec3 vViewPos;
 uniform float time;
 varying float vCount;
 uniform vec3 particles_c1;
 
 void main() {
-  // vec3 fdx = vec3( dFdx( vViewPos.x ), dFdx( vViewPos.y ), dFdx( vViewPos.z ) );
-  // vec3 fdy = vec3( dFdy( vViewPos.x ), dFdy( vViewPos.y ), dFdy( vViewPos.z ) );
-  // vec3 normal = normalize( cross( fdx, fdy ) );
-
   float z = mod(time + vCount, 3000.0);
   float t = 0.0;
 

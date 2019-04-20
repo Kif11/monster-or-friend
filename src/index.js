@@ -32,7 +32,13 @@ const App = () => (
     <a-entity ik-monster color-theme />
     <a-entity particles color-theme />
     <a-entity environment color-theme />
-    <a-entity sound="src: url(assets/astral.mp3); autoplay: true; volume:1; loop:true; positional:false;" />
+
+    <a-entity sound="
+      src: url(assets/astral.mp3);
+      volume:1;
+      loop: true; 
+      positional: false;
+    " />
 
   </a-scene>
 );
