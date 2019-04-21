@@ -20,11 +20,6 @@ AFRAME.registerComponent('ik-monster', {
     this.armYcount = 5;
     this.distance = 0.52;
 
-    // head sphere
-    const geometry = new THREE.SphereGeometry(0.05);
-    const material = new THREE.MeshBasicMaterial({ wireframe: true });
-    const mesh = new THREE.Mesh(geometry, material);
-
     const points = [];
     for (let i = 0; i < 10; ++i) {
       points.push(new THREE.Vector2(Math.sin(-i * 0.7) * 4 + 3, (i - 5) * 5).multiplyScalar(0.04));
@@ -33,7 +28,7 @@ AFRAME.registerComponent('ik-monster', {
     const jointGeo = new THREE.LatheBufferGeometry(points, 8);
     jointGeo.applyMatrix(new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2))
 
-    const noiseTexture = new THREE.TextureLoader().load('/assets/tex_Fern_Lush_Noise.jpg');
+    const noiseTexture = new THREE.TextureLoader().load('assets/tex_Fern_Lush_Noise.jpg');
     this.el.material = new THREE.ShaderMaterial({
       uniforms: {
         noise: { value: noiseTexture },
@@ -51,7 +46,7 @@ AFRAME.registerComponent('ik-monster', {
       depthWrite: false
     });
 
-    this.target = mesh;
+    this.target = new THREE.Object3D();
     scene.add(this.target)
 
     this.iks = [];
