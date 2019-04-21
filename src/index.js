@@ -16,8 +16,18 @@ const App = () => (
 
     <a-entity web-ui-controller />
     <div id="buttonsContainer">
-      <img class="btnImage" src="assets/info.png" alt="info" />
+      <a href="https://medium.com/@snayss/making-of-webvr-demo-monster-or-friend-103befe0e5b5" target="_blank">
+        <img class="btnImage" src="assets/info.png" alt="info" />
+      </a>
       <img class="btnImage" id="soundBtn" src="assets/no-sound.png" alt="sound" />
+    </div>
+
+    <div class="moveTutorialContainer">
+      <div class="tutorialText">USE</div>
+      <img class="tutorialImg move" src="assets/wasd.png" alt="WSAD" />
+      <div class="tutorialText">TO MOVE AND</div>
+      <img class="tutorialImg theme" src="assets/space.png" alt="space bar" />
+      <div class="tutorialText">TO SWITCH THEMES</div>
     </div>
 
     <a-entity id="rig" position="0 0 0">
