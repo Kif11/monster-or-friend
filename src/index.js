@@ -24,6 +24,8 @@ const App = () => (
       <a-camera position="0 0 0" />
       <a-entity
         oculus-go-controls
+        oculus-touch-controls
+        vive-controls
         mover
       />
     </a-entity>
@@ -51,7 +53,7 @@ const App = () => (
         positional: false;
       "
     />
-    
+
   </a-scene>
 );
 
