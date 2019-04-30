@@ -28,7 +28,7 @@ AFRAME.registerComponent('ik-monster', {
     const jointGeo = new THREE.LatheBufferGeometry(points, 8);
     jointGeo.applyMatrix(new THREE.Matrix4().makeRotationAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2))
 
-    const noiseTexture = new THREE.TextureLoader().load('/assets/tex_Fern_Lush_Noise.jpg');
+    const noiseTexture = new THREE.TextureLoader().load('assets/tex_Fern_Lush_Noise.jpg');
     this.el.material = new THREE.ShaderMaterial({
       uniforms: {
         noise: { value: noiseTexture },

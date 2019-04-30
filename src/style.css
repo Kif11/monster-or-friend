@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300');
+
 #buttonsContainer {
   display: flex;
   position: absolute;
@@ -12,11 +14,46 @@
   display: inline-block;
   z-index: 999;
   width: 50px;
-  width: 50px;
   margin-left: 10px;
 }
 
 .btnImage:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+.moveTutorialContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 999;
+}
+
+.tutorialText, .tutorialImg {
+  display: inline-block;
+  z-index: 999;
+  margin-bottom: 20px;
+}
+
+.tutorialText {
+  font-size: 18px;
+  color: white;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.tutorialImg {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.tutorialImg {
+  width: 90px;
+}
+
+@media screen and (max-width: 600px) {
+  .moveTutorialContainer {
+    visibility: hidden;
+  }
 }
