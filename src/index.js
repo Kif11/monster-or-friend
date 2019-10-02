@@ -34,10 +34,11 @@ const App = () => (
       <a-camera position="0 0 0" />
       <a-entity
         oculus-go-controls
-        oculus-touch-controls
         vive-controls
         mover
       />
+      <a-entity oculus-touch-controls="hand: left" mover/>
+      <a-entity oculus-touch-controls="hand: right" mover/>
     </a-entity>
 
     <a-assets>
