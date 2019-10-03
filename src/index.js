@@ -10,6 +10,7 @@ import './components/ColorTheme';
 import './components/Tutorial';
 import './components/SoundController';
 import './components/WebUIController';
+import './components/QuestControl';
 
 const App = () => (
   <a-scene background="color: black">
@@ -31,24 +32,34 @@ const App = () => (
     </div>
 
     <a-entity id="rig" position="0 0 0">
-      <a-camera position="0 0 0" />
+      <a-camera id="camera" position="0 0 0" />
       <a-entity
         oculus-go-controls
         vive-controls
         mover
       />
-      <a-entity oculus-touch-controls="hand: left" mover/>
-      <a-entity oculus-touch-controls="hand: right" mover/>
+      <a-entity quest-control="hand: left" mover/>
+      <a-entity quest-control="hand: right" mover/>
     </a-entity>
 
     <a-assets>
-      <a-asset-item id="controller" src="https://cdn.aframe.io/controllers/oculus/go/oculus-go-controller.gltf" />
+      <a-asset-item id="controller" src="assets/go_controller/go_controller.gltf" />
       <a-asset-item id="annotations" src="assets/annotations/annotations.gltf" />
     </a-assets>
 
-    <a-entity tutorial visible="false">
+    <a-assets>
+      <a-asset-item id="questTutorialController" src="assets/quest_tutorial_controller/quest_tutorial_controller.gltf" />
+      <a-asset-item id="questAnnotations" src="assets/quest_anotations/quest_anotations.gltf" />
+    </a-assets>
+
+    <a-entity id="goTutorial" tutorial visible="false">
       <a-gltf-model name="annotations" src="#annotations" />
       <a-gltf-model name="tutorialController" src="#controller" />
+    </a-entity>
+
+    <a-entity id="questTutorial" tutorial visible="true">
+      <a-gltf-model name="tutorialController" src="#questTutorialController" />
+      <a-gltf-model name="annotations" src="#questAnnotations" />
     </a-entity>
 
     <a-entity ik-monster color-theme />
