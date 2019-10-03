@@ -1,19 +1,7 @@
 import AFRAME from 'aframe';
 const THREE = AFRAME.THREE;
 import { fresnelMaterial } from './FresnelMaterial';
-
-async function getHeadsetType() {
-  const displays = await navigator.getVRDisplays();
-  for (let i = 0; i < displays.length; i += 1) {
-    const d = displays[i];
-    if (d.displayName === "Oculus Quest") {
-      return "Oculus Quest";
-    } else if (d.displayName === "Oculus Go") {
-      return "Oculus Go";
-    }
-  }
-  return null
-}
+import { getHeadsetType } from './Utils.js'
 
 AFRAME.registerComponent('tutorial', {
   init: async function () {
@@ -47,7 +35,7 @@ AFRAME.registerComponent('tutorial', {
         if (
           child.name === 'oculus_go_touchpad' ||
           child.name === 'oculus_go_button_trigger' ||
-          child.name === 'thumstick' ||
+          child.name === 'thumbstick' ||
           child.name === 'trigger' ||
           child.name === 'b_button'
         ) {

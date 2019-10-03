@@ -10,10 +10,10 @@ import './components/ColorTheme';
 import './components/Tutorial';
 import './components/SoundController';
 import './components/WebUIController';
-import './components/QuestControl';
+import './components/CustomControl';
 
 const App = () => (
-  <a-scene background="color: black">
+  <a-scene background="color: black" renderer="antialias: true">
 
     <a-entity web-ui-controller />
     <div id="buttonsContainer">
@@ -33,13 +33,8 @@ const App = () => (
 
     <a-entity id="rig" position="0 0 0">
       <a-camera id="camera" position="0 0 0" />
-      <a-entity
-        oculus-go-controls
-        vive-controls
-        mover
-      />
-      <a-entity quest-control="hand: left" mover/>
-      <a-entity quest-control="hand: right" mover/>
+      <a-entity custom-control="hand: left" mover visible="false" />
+      <a-entity custom-control="hand: right" mover visible="false" />
     </a-entity>
 
     <a-assets>

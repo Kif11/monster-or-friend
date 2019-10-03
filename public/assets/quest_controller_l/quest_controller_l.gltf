@@ -2951,11 +2951,11 @@
 			"mesh":24
 		},
 		{
-			"name":"a_button",
+			"name":"x_button",
 			"mesh":25
 		},
 		{
-			"name":"b_button",
+			"name":"y_button",
 			"mesh":26
 		},
 		{
@@ -2971,7 +2971,7 @@
 			"mesh":29
 		},
 		{
-			"name":"thumstick",
+			"name":"thumbstick",
 			"mesh":30
 		},
 		{
@@ -3008,7 +3008,7 @@
 			"mesh":37
 		},
 		{
-			"name":"thumstick",
+			"name":"thumbstick",
 			"mesh":38
 		},
 		{
