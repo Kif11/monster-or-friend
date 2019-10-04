@@ -83,7 +83,7 @@ AFRAME.registerComponent('tutorial', {
         controller.rotation.y = THREE.Math.degToRad(-10);
       }, 500)
 
-      const tutorialDuration = 8000; //ms
+      const tutorialDuration = 15000; //ms
       setTimeout(() => {
         this.el.setAttribute("visible", false);
       }, tutorialDuration)
