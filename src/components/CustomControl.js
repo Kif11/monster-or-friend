@@ -31,8 +31,6 @@ AFRAME.registerComponent('custom-control', {
       this.el.sceneEl.addEventListener('enter-vr', (ent) => {
         this.el.setAttribute('visible', true);
 
-        console.log('ENTER VR');
-
         // Set a model.
         if (hand === 'left') {
           this.el.setAttribute('gltf-model', this.data.modelL);
@@ -99,7 +97,6 @@ AFRAME.registerComponent('custom-control', {
       // Remove controllers
       this.el.sceneEl.addEventListener('exit-vr', (ent) => {
         this.el.setAttribute('visible', false);
-        console.log('VISIBLE FALSE');
       });
     }
 

@@ -52,7 +52,7 @@ const App = () => (
       <a-gltf-model name="tutorialController" src="#controller" />
     </a-entity>
 
-    <a-entity id="questTutorial" tutorial visible="true">
+    <a-entity id="questTutorial" tutorial visible="false">
       <a-gltf-model name="tutorialController" src="#questTutorialController" />
       <a-gltf-model name="annotations" src="#questAnnotations" />
     </a-entity>
