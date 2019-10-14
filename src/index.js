@@ -17,10 +17,13 @@ const App = () => (
 
     <a-entity web-ui-controller />
     <div id="buttonsContainer">
-      <a href="https://medium.com/@snayss/making-of-webvr-demo-monster-or-friend-103befe0e5b5" target="_blank">
+      <a href="https://codercat.tk" target="_blank" title="Codercat home page">
+        <img class="btnImage" src="assets/cc-icon-white.png" alt="codercat" />
+      </a>
+      <a href="https://medium.com/@snayss/making-of-webvr-demo-monster-or-friend-103befe0e5b5" target="_blank" title="How we made this experience">
         <img class="btnImage" src="assets/info.png" alt="info" />
       </a>
-      <img class="btnImage" id="soundBtn" src="assets/no-sound.png" alt="sound" />
+      <img class="btnImage" id="soundBtn" src="assets/no-sound.png" alt="sound" title="Toggle sound"/>
     </div>
 
     <div class="moveTutorialContainer">
