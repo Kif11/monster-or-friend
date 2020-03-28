@@ -10,11 +10,17 @@
   z-index: 999;
 }
 
+#soundBtn {
+  position: absolute;
+  bottom: 15px;
+  left: 20px;
+}
+
 .btnImage {
   display: inline-block;
   z-index: 999;
   width: 50px;
-  margin-left: 10px;
+  margin-right: 20px;
 }
 
 .btnImage:hover {

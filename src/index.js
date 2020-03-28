@@ -11,20 +11,44 @@ import './components/Tutorial';
 import './components/SoundController';
 import './components/WebUIController';
 import './components/CustomControl';
+import { log } from 'three';
+
+const getRandomInstagramLink = () => Math.random() > 0.5
+  ? 'https://www.instagram.com/kif11/'
+  : 'https://www.instagram.com/snayss/';
 
 const App = () => (
   <a-scene background="color: black" renderer="antialias: true">
-
     <a-entity web-ui-controller />
     <div id="buttonsContainer">
       <a href="https://codercat.tk" target="_blank" title="Codercat home page">
         <img class="btnImage" src="assets/cc-icon-white.png" alt="codercat" />
       </a>
-      <a href="https://medium.com/@snayss/making-of-webvr-demo-monster-or-friend-103befe0e5b5" target="_blank" title="How we made this experience">
+      <a
+        href="https://medium.com/@snayss/making-of-webvr-demo-monster-or-friend-103befe0e5b5"
+        target="_blank"
+        title="How we made this experience"
+      >
         <img class="btnImage" src="assets/info.png" alt="info" />
       </a>
-      <img class="btnImage" id="soundBtn" src="assets/no-sound.png" alt="sound" title="Toggle sound"/>
+      <a
+        id='intaLink'
+        href={getRandomInstagramLink()}
+        role="button"
+        target="_blank"
+        title="Instagram"
+      >
+        <img class="btnImage" src="assets/insta.png" alt="instagram" />
+      </a>
     </div>
+
+    <img
+      class="btnImage"
+      id="soundBtn"
+      src="assets/no-sound.png"
+      alt="sound"
+      title="Toggle sound"
+    />
 
     <div class="moveTutorialContainer">
       <div class="tutorialText">USE</div>
@@ -41,13 +65,25 @@ const App = () => (
     </a-entity>
 
     <a-assets>
-      <a-asset-item id="controller" src="assets/go_controller/go_controller.gltf" />
-      <a-asset-item id="annotations" src="assets/annotations/annotations.gltf" />
+      <a-asset-item
+        id="controller"
+        src="assets/go_controller/go_controller.gltf"
+      />
+      <a-asset-item
+        id="annotations"
+        src="assets/annotations/annotations.gltf"
+      />
     </a-assets>
 
     <a-assets>
-      <a-asset-item id="questTutorialController" src="assets/quest_tutorial_controller/quest_tutorial_controller.gltf" />
-      <a-asset-item id="questAnnotations" src="assets/quest_anotations/quest_anotations.gltf" />
+      <a-asset-item
+        id="questTutorialController"
+        src="assets/quest_tutorial_controller/quest_tutorial_controller.gltf"
+      />
+      <a-asset-item
+        id="questAnnotations"
+        src="assets/quest_anotations/quest_anotations.gltf"
+      />
     </a-assets>
 
     <a-entity id="goTutorial" tutorial visible="false">
@@ -73,8 +109,19 @@ const App = () => (
         positional: false;
       "
     />
-
   </a-scene>
 );
 
+// Mount main app
 document.querySelector('body').appendChild(App());
+
+const instaLink = document.getElementById('intaLink');
+
+instaLink.onclick = () => {
+  const link =
+    instaLink.href === 'https://www.instagram.com/kif11/'
+      ? 'https://www.instagram.com/snayss/'
+      : 'https://www.instagram.com/kif11/';
+
+  instaLink.href = link;
+}
