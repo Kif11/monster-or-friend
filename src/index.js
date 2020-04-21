@@ -60,8 +60,9 @@ const App = () => (
 
     <a-entity id="rig" position="0 0 0">
       <a-camera id="camera" position="0 0 0" />
-      <a-entity custom-control="hand: left" mover visible="false" />
-      <a-entity custom-control="hand: right" mover visible="false" />
+      <a-entity oculus-go-controls />
+      <a-entity oculus-touch-controls="hand: left; orientationOffset: 0 0 0;" custom-control="hand: left;" mover visible="false" />
+      <a-entity oculus-touch-controls="hand: right; orientationOffset: 0 0 0;" custom-control="hand: right;" mover visible="false" />
     </a-entity>
 
     <a-assets>

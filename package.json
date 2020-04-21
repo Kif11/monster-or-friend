@@ -28,7 +28,7 @@
     "webpack-glsl-loader": "^1.0.1"
   },
   "dependencies": {
-    "aframe": "1.0.0",
+    "aframe": "git://github.com/aframevr/aframe.git#c77905621e540fb62208187acff5622536227c68",
     "babel-polyfill": "^6.26.0",
     "react": "^16.8.6",
     "three": "^0.103.0",

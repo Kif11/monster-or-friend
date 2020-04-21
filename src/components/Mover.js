@@ -13,8 +13,8 @@ AFRAME.registerComponent('mover', {
     this.camera = camera.object3D;
 
     this.el.addEventListener('axismove', (evt) => {
-      this.lastAxis.x = evt.detail.axis[0];
-      this.lastAxis.y = evt.detail.axis[1];
+      this.lastAxis.x = evt.detail.axis[2];
+      this.lastAxis.y = evt.detail.axis[3];
     });
 
     /*

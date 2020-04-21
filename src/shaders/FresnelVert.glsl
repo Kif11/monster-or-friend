@@ -3,8 +3,6 @@ uniform float mFresnelBias;
 uniform float mFresnelScale;
 uniform float mFresnelPower;
 
-varying vec3 vReflect;
-varying vec3 vRefract[3];
 varying float vReflectionFactor;
 
 void main() {
